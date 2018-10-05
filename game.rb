@@ -5,15 +5,15 @@ class Game
 
     def initialize 
       @cells = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
-      player1 = Player.new("Player 1", "X")
-      player2 = Player.new("Player 2", "O")
-      @current_player = player1
+      @player1 = Player.new("Player 1", "X")
+      @player2 = Player.new("Player 2", "O")
+      @current_player = @player1
 
     end
 
   def switch_player
 
-    current_player = (current_player == player1) ? player2 : player1
+    @current_player = (@current_player == @player1) ? @player2 : @player1
 
   end
 
@@ -38,7 +38,9 @@ class Game
     end
 
     def player_choice
+        show_board
        puts "#{@current_player.name}'s turn: Pick a cell number from the map"
+       switch_player
        choice = gets.chomp.to_i
        
        if choice.between?(1, 9) == false
@@ -49,10 +51,19 @@ class Game
     end
 
     def player_select
-      
+      if cells[player_choice] == " "
+        cells[player_choice] = @current_player.shape
+      else
+
+        player_choice
+      end
     end
 
 
-
-
 end
+
+game = Game.new
+game.game_map
+game.player_choice
+game.player_select
+
