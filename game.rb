@@ -93,15 +93,16 @@ protected
         if (condition - @current_player.cells_selected).empty?
             puts "#{@current_player.name} wins"
             @end_game = true
+            return @end_game
         end
-
+        
       end
-     
-        if ((@player1.cells_selected.length + @player2.cells_selected.length) == 9)
+      if ((@player1.cells_selected.length + @player2.cells_selected.length) == 9)
 
-           puts "It's a draw!"
-           @end_game = true
-        end
+        puts "It's a draw!"
+        @end_game = true
+        return end_game
+      end
         return @end_game
     end
 
