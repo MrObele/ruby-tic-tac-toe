@@ -49,6 +49,7 @@ class Game
     end
 
     def player_select
+      game_map
       move = player_choice
 
       while cells[move] != " "
@@ -57,6 +58,9 @@ class Game
       end
       cells[move] = @current_player.shape
       @current_player.cells_selected << move
+      show_board
+      check_end_game
+      switch_player
     end
     
 
@@ -65,27 +69,27 @@ class Game
       winning_condition = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]]
       winning_condition.each do |condition|
         if (condition - @current_player.cells_selected).empty?
-            puts "#{current_player.name} wins"
+            puts "#{@current_player.name} wins"
             @end_game = true
         end
 
+      end
+     
+        if ((@player1.cells_selected.length + @player2.cells_selected.length) == 9)
+
+           puts "It's a draw!"
+           @end_game = true
+        end
+        return @end_game
     end
 
+    def play
+        while end_game == false do
+            player_select
+        end
     end
-
-
-
-
-
 end
 
 game = Game.new
-
-8.times do 
-game.show_board
-game.game_map
-game.player_select
-game.switch_player
-
-end
+game.play
 
