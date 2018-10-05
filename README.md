@@ -2,11 +2,11 @@
 
 This is a command line tic-tac-toe game built on ruby 
 
-#How to play the game
+## How to play the game
  * clone the repo and ensure you have ruby installed on your system
  * run `ruby game.rb` to begin
 
-# Authors: 
+## Authors: 
 
 [Chibuzor Efedigbue](https://www.github.com/uzorjchibuzor)
 

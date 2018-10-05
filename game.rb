@@ -5,13 +5,15 @@ class Game
     attr_accessor :cells, :end_game
 
     def initialize 
-      @cells = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
-      @player1 = Player.new("Player 1", "X")
-      @player2 = Player.new("Player 2", "O")
-      @current_player = @player1
-      @end_game = false
+        @cells = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
+        puts "Player 1, you are X. Enter your name"
+        @player1 = Player.new(gets.chomp, "X")
+        puts "Player 2, you are O. Enter your name"
+        @player2 = Player.new(gets.chomp, "O")
+        @current_player = @player1
+        @end_game = false
     end
-
+  
 
    # This is the method that plays the game.
    def play
