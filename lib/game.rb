@@ -1,4 +1,4 @@
-require './player'
+require_relative 'player'
 
 # This class generates the game environment and initializes the Player instances from the Player class
 class Game
