@@ -9,27 +9,40 @@ class Game
   def initialize
     @end_game = false
     @message = Messages.new
-    puts "Player 1, you are X. Enter your name"
-    @player1 = Player.new(@message.collect(), "X")
-    puts "Player 2, you are O. Enter your name"
-    @player2 = Player.new(@message.collect(), "O")
+    @player1 = Player.new('Player 1', "X")
+    @player2 = Player.new('Player 2', "O")
     @current_player = @player1
     @board = Board.new
   end
+
+  def get_player1  # These three methods are for testing purposes only
+    @player1
+  end
+
+  def get_player2
+    @player2
+  end
+
+  def get_current_player
+    @current_player
+  end
+  # end of test methods
+
+
+
 
 
   # This is the method that starts the game play.
   def play
     while end_game == false do
+      @message.ask_for_input(@current_player.name)
       play_game
     end
  end 
 
-  private
+  # protected
 
-  def choose_cell
-    @message.ask_for_input(@current_player.name)
-    choice = @message.collect().to_i
+  def choose_cell(choice = @message.collect().to_i)
     until choice.between?(1, 9) == true
       @message.ask_for_input(@current_player.name)
       choice = @message.collect().to_i
@@ -39,7 +52,10 @@ class Game
 
   def switch_player
     @current_player = (@current_player == @player1) ? @player2 : @player1
+    @current_player
   end
+
+
 
   def play_game
     @message.show_map
@@ -79,6 +95,6 @@ class Game
 end
 
 
-game = Game.new
-game.play()
+# game = Game.new
+# game.play()
 
