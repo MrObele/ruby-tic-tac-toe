@@ -7,4 +7,8 @@ class Player
       @shape = shape
       @cells_selected = []
   end
+
+  def record_choice(option)
+    self.cells_selected << option
+  end
 end
